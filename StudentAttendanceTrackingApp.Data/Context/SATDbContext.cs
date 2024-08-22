@@ -26,17 +26,18 @@ namespace StudentAttendanceTrackingApp.Data
 
         }
 
-        public DbSet<Lesson> Students { get; set; }
+        public DbSet<Student> Students { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurations();
+            modelBuilder.CreateData();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql(@"Host=localhost;Database=postgres;Username=tt;Password=tt2727;Search Path=SatApp");
+            optionsBuilder.UseNpgsql(@"Host=localhost;Database=postgres;Username=tt;Password=tt2727;Search Path=satapp");
         }
 
     }

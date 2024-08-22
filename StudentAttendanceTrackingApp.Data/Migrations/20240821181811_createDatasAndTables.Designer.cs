@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using StudentAttendanceTrackingApp.Data;
@@ -11,9 +12,11 @@ using StudentAttendanceTrackingApp.Data;
 namespace StudentAttendanceTrackingApp.Data.Migrations
 {
     [DbContext(typeof(SATDbContext))]
-    partial class SATDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240821181811_createDatasAndTables")]
+    partial class createDatasAndTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

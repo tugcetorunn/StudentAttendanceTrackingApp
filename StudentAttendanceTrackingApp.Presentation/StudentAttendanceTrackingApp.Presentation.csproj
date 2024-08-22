@@ -7,10 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\StudentAttendanceTrackingApp.Business\StudentAttendanceTrackingApp.Business.csproj" />
     <ProjectReference Include="..\StudentAttendanceTrackingApp.Data\StudentAttendanceTrackingApp.Data.csproj" />
   </ItemGroup>
 

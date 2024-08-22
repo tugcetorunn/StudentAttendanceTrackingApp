@@ -12,9 +12,12 @@ namespace StudentAttendanceTrackingApp.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Lesson> builder)
         {
-            builder.ToTable("Lesson", "SatApp");
+            builder.ToTable("Lesson", "satapp");
 
             builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.Id)
+                   .ValueGeneratedOnAdd();
 
             builder.Property(x => x.Name)
                    .IsRequired()
