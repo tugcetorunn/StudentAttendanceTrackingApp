@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -8,13 +8,22 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <!--<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.0.2" />-->
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\StudentAttendanceTrackingApp.Business\StudentAttendanceTrackingApp.Business.csproj" />
     <ProjectReference Include="..\StudentAttendanceTrackingApp.Data\StudentAttendanceTrackingApp.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="TT.Core">
+      <HintPath>..\..\..\CORE LIBRARIES\TT\TT.Core\bin\Debug\net8.0\TT.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

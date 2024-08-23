@@ -1,8 +1,13 @@
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using StudentAttendanceTrackingApp.Data;
 using StudentAttendanceTrackingApp.Presentation.Extensions;
 using System.Reflection;
+using System.Text;
+using TT.Core.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,12 +23,50 @@ builder.Services.AddSwaggerGen();
 builder.Services.RegisterHandlers();
 
 // mediator entegration
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())); // versiyon 12 den çncesi farklý sonrasý farklý
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())); // versiyon 12 den öncesi farklý sonrasý farklý
 
 // mediator için injection yönlendirmesi. (ne zaman ýmediator ý çaðýrýrsak bana mediator ý çalýþtýr.)
 builder.Services.AddScoped<IMediator, Mediator>();
 
+// token production için injection yönlendirmesi (dependency injection þartý)
+ builder.Services.AddScoped<TokenService>();
+
 builder.Services.AddDbContext<SATDbContext>(/*options => options.UseNpgsql(@"Host=localhost;Database=postgres;Username=tt;Password=tt2727;Search Path=satapp")*/);
+
+// authorization dll projesinde tanýmladýðýmýz bu bilgileri bu projede de configuration dan çekmek için burada tanýmlýyoruz.
+// dll projesinde configuration class ýný inject etmiþtik fakar burasý program.cs, burada class method yapýsý olmadýðý için builder burada bunu saðlayacak. 
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+var secretKey = jwtSettings["SecretKey"]; // bilgilerin þifrelenmesi bu key yapýsýna göre olur. minimum 16 karakter olmalý
+var issuer = jwtSettings["Issuer"]; // token ý oluþturan sunucu
+var audience = jwtSettings["Audience"]; // token ý kullanacak kiþi, uygulama, site. örneðin bir sitenin kullanýmýna özel bir api projemiz varsa buraya yazarýz.
+var expireMinutes = int.Parse(jwtSettings["ExpireMinutes"]); // api yi tüketme eriþim süresi (dk)
+// burada tanýmlamasak da diðer projede tanýmladýðýmýz yerlerden çeker mi teste et...
+
+// jwt authentication ekleme
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; // kimlik doðrulamasý için bu þemayý eklememiz gerekiyor.
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        // true false atamalarý ihtiyaçlarýmýzý belirler.
+        // bu kýsýmlar da core tarafýna taþýnabilir. deðerler verilmiþse true verilmemiþse false döner.
+        ValidateIssuer = true, // token ý oluþturan taraf, güvenlik açýsýndan true yaparýz.
+        ValidateAudience = false, // token ýn hedef kitlesini ayarlarýz. (apilerimizi kim tüketecek?)
+        ValidateLifetime = true, // token süresini kontrol eder. bunlarý yazmazsak default deðer atar.
+        ValidateIssuerSigningKey = true, // token ý imzalamak için kullanýlan anahtarýn doðruluðunu kontrol eder. (secretkey) güvenliði saðlamak için zorunlu alandýr.
+        ValidIssuer = issuer, // yukarýda tanýmladýk, sonra validasyonunu yaptýk ve artýk geçerli issuer olarak atýyoruz.
+        ValidAudience = audience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)), // token imzalanmasý için kullanýlan key i veriyoruz. token ýn geçerli olup olmadýðýný kontrol eder.
+        ClockSkew = TimeSpan.FromMinutes(5) // token ýn süresi dolduðunda bir miktar daha esneklik saðlar 5 dk ayarlandý.
+    };
+});
+
+builder.Services.AddAuthentication(); // yukarýdaki komut özellik ekliyor burada authentication ý entegre etmiþ oluyoruz.
+
+builder.Services.AddSwaggerConfiguration();
 
 var app = builder.Build();
 
@@ -36,5 +79,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseAuthentication();
+app.UseAuthorization(); // kimlik doðrulamasýný yapar.
 
 app.Run();

@@ -9,13 +9,35 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace StudentAttendanceTrackingApp.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class createDatasAndTables : Migration
+    public partial class alldata : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
                 name: "satapp");
+
+            migrationBuilder.CreateTable(
+                name: "ApiUsers",
+                schema: "satapp",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserName = table.Column<string>(type: "text", nullable: false),
+                    Password = table.Column<string>(type: "text", nullable: false),
+                    FirstName = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
+                    LastName = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
+                    Email = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Phone = table.Column<string>(type: "text", nullable: false),
+                    Company = table.Column<string>(type: "text", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
+                    CreaDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApiUsers", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Lesson",
@@ -55,20 +77,33 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
 
             migrationBuilder.InsertData(
                 schema: "satapp",
+                table: "ApiUsers",
+                columns: new[] { "Id", "Company", "CreaDate", "Email", "FirstName", "IsDeleted", "LastName", "Password", "Phone", "UserName" },
+                values: new object[,]
+                {
+                    { 1, "Tech Solutions", new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Utc), "johndoe@example.com", "John", false, "Doe", "password123", "+1234567890", "jdoe" },
+                    { 2, "Innovatech", new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Utc), "alicesmith@example.com", "Alice", false, "Smith", "securepass456", "+0987654321", "asmith" },
+                    { 3, "Future Tech", new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Utc), "bobmiller@example.com", "Bob", false, "Miller", "mypassword789", "+1122334455", "bmiller" },
+                    { 4, "Tech Innovators", new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Utc), "charliejohnson@example.com", "Charlie", false, "Johnson", "pass1234", "+6677889900", "cjohnson" },
+                    { 5, "NextGen Tech", new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Utc), "dianadavis@example.com", "Diana", false, "Davis", "password321", "+4455667788", "ddavis" }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "satapp",
                 table: "Lesson",
                 columns: new[] { "Id", "CreaDate", "IsDeleted", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), false, "Matematik" },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), false, "Fizik" },
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), false, "Kimya" },
-                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), false, "Biyoloji" },
-                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), false, "Tarih" },
-                    { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), false, "Coğrafya" },
-                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), false, "İngilizce" },
-                    { 8, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), false, "Edebiyat" },
-                    { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), false, "Bilgisayar Bilimleri" },
-                    { 10, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), false, "Beden Eğitimi" }
+                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Matematik" },
+                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Fizik" },
+                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Kimya" },
+                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Biyoloji" },
+                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Tarih" },
+                    { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Coğrafya" },
+                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "İngilizce" },
+                    { 8, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Edebiyat" },
+                    { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Bilgisayar Bilimleri" },
+                    { 10, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Beden Eğitimi" }
                 });
 
             migrationBuilder.InsertData(
@@ -98,6 +133,10 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ApiUsers",
+                schema: "satapp");
+
             migrationBuilder.DropTable(
                 name: "Lesson",
                 schema: "satapp");

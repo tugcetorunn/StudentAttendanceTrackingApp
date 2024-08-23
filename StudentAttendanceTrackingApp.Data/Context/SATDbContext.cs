@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudentAttendanceTrackingApp.Data.Configurations;
+using StudentAttendanceTrackingApp.Data.Entities;
 using StudentAttendanceTrackingApp.Data.Extensions;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace StudentAttendanceTrackingApp.Data
 
         public DbSet<Student> Students { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<ApiUser> ApiUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

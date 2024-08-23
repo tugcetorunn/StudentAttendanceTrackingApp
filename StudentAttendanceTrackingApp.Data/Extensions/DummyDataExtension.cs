@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StudentAttendanceTrackingApp.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace StudentAttendanceTrackingApp.Data.Extensions
         {
             modelBuilder.Entity<Student>().HasData(StudentsData());
             modelBuilder.Entity<Lesson>().HasData(LessonsData());
+            modelBuilder.Entity<ApiUser>().HasData(ApiUsersData());
         }
 
         public static List<Student> StudentsData()
@@ -56,6 +58,80 @@ namespace StudentAttendanceTrackingApp.Data.Extensions
             };
 
             return lessons;
+        }
+
+        public static List<ApiUser> ApiUsersData()
+        {
+            var users = new List<ApiUser>
+            {
+                new ApiUser
+                {
+                    Id = 1,
+                    UserName = "jdoe",
+                    Password = "password123",
+                    FirstName = "John",
+                    LastName = "Doe",
+                    Email = "johndoe@example.com",
+                    Phone = "+1234567890",
+                    Company = "Tech Solutions",
+                    IsDeleted = false,
+                    CreaDate = DateTime.SpecifyKind(new DateTime(2023, 1, 15), DateTimeKind.Utc)
+                },
+                new ApiUser
+                {
+                    Id = 2,
+                    UserName = "asmith",
+                    Password = "securepass456",
+                    FirstName = "Alice",
+                    LastName = "Smith",
+                    Email = "alicesmith@example.com",
+                    Phone = "+0987654321",
+                    Company = "Innovatech",
+                    IsDeleted = false,
+                    CreaDate = DateTime.SpecifyKind(new DateTime(2023, 2, 20), DateTimeKind.Utc)
+                },
+                new ApiUser
+                {
+                    Id = 3,
+                    UserName = "bmiller",
+                    Password = "mypassword789",
+                    FirstName = "Bob",
+                    LastName = "Miller",
+                    Email = "bobmiller@example.com",
+                    Phone = "+1122334455",
+                    Company = "Future Tech",
+                    IsDeleted = false,
+                    CreaDate = DateTime.SpecifyKind(new DateTime(2023, 3, 10), DateTimeKind.Utc)
+                },
+                new ApiUser
+                {
+                    Id = 4,
+                    UserName = "cjohnson",
+                    Password = "pass1234",
+                    FirstName = "Charlie",
+                    LastName = "Johnson",
+                    Email = "charliejohnson@example.com",
+                    Phone = "+6677889900",
+                    Company = "Tech Innovators",
+                    IsDeleted = false,
+                    CreaDate = DateTime.SpecifyKind(new DateTime(2023, 4, 5), DateTimeKind.Utc)
+                },
+                new ApiUser
+                {
+                    Id = 5,
+                    UserName = "ddavis",
+                    Password = "password321",
+                    FirstName = "Diana",
+                    LastName = "Davis",
+                    Email = "dianadavis@example.com",
+                    Phone = "+4455667788",
+                    Company = "NextGen Tech",
+                    IsDeleted = false,
+                    CreaDate = DateTime.SpecifyKind(new DateTime(2023, 5, 25), DateTimeKind.Utc)
+                }
+            };
+
+            return users;
         }
     }
 }

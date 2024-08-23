@@ -22,6 +22,123 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("StudentAttendanceTrackingApp.Data.Entities.ApiUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Company")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreaDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ApiUsers", "satapp");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Company = "Tech Solutions",
+                            CreaDate = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "johndoe@example.com",
+                            FirstName = "John",
+                            IsDeleted = false,
+                            LastName = "Doe",
+                            Password = "password123",
+                            Phone = "+1234567890",
+                            UserName = "jdoe"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Company = "Innovatech",
+                            CreaDate = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "alicesmith@example.com",
+                            FirstName = "Alice",
+                            IsDeleted = false,
+                            LastName = "Smith",
+                            Password = "securepass456",
+                            Phone = "+0987654321",
+                            UserName = "asmith"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Company = "Future Tech",
+                            CreaDate = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "bobmiller@example.com",
+                            FirstName = "Bob",
+                            IsDeleted = false,
+                            LastName = "Miller",
+                            Password = "mypassword789",
+                            Phone = "+1122334455",
+                            UserName = "bmiller"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Company = "Tech Innovators",
+                            CreaDate = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "charliejohnson@example.com",
+                            FirstName = "Charlie",
+                            IsDeleted = false,
+                            LastName = "Johnson",
+                            Password = "pass1234",
+                            Phone = "+6677889900",
+                            UserName = "cjohnson"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Company = "NextGen Tech",
+                            CreaDate = new DateTime(2023, 5, 25, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "dianadavis@example.com",
+                            FirstName = "Diana",
+                            IsDeleted = false,
+                            LastName = "Davis",
+                            Password = "password321",
+                            Phone = "+4455667788",
+                            UserName = "ddavis"
+                        });
+                });
+
             modelBuilder.Entity("StudentAttendanceTrackingApp.Data.Lesson", b =>
                 {
                     b.Property<int>("Id")
@@ -163,7 +280,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 1,
-                            BirthDate = new DateTime(2000, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2000, 1, 15, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Istanbul",
                             CreaDate = new DateTime(2024, 8, 2, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "ali.yilmaz@hotmail.com",
@@ -174,7 +291,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 2,
-                            BirthDate = new DateTime(2001, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2001, 3, 22, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Ankara",
                             CreaDate = new DateTime(2024, 8, 4, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "ayse.kaya@hotmail.com",
@@ -185,7 +302,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 3,
-                            BirthDate = new DateTime(1999, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(1999, 11, 30, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Izmir",
                             CreaDate = new DateTime(2024, 8, 7, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "mehmet.demir@hotmail.com",
@@ -196,7 +313,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 4,
-                            BirthDate = new DateTime(2002, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2002, 5, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Bursa",
                             CreaDate = new DateTime(2024, 8, 8, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "fatma.celik@hotmail.com",
@@ -207,7 +324,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 5,
-                            BirthDate = new DateTime(2000, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2000, 8, 18, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Antalya",
                             CreaDate = new DateTime(2024, 8, 9, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "ahmet.yildiz@hotmail.com",
@@ -218,7 +335,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 6,
-                            BirthDate = new DateTime(2003, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2003, 7, 10, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Adana",
                             CreaDate = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "elif.arslan@hotmail.com",
@@ -229,7 +346,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 7,
-                            BirthDate = new DateTime(1998, 9, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(1998, 9, 14, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Konya",
                             CreaDate = new DateTime(2024, 8, 14, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "murat.koc@hotmail.com",
@@ -240,7 +357,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 8,
-                            BirthDate = new DateTime(2001, 12, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2001, 12, 19, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Samsun",
                             CreaDate = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "zeynep.aydin@hotmail.com",
@@ -251,7 +368,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 9,
-                            BirthDate = new DateTime(1997, 6, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(1997, 6, 21, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Kayseri",
                             CreaDate = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "hasan.ozturk@hotmail.com",
@@ -262,7 +379,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 10,
-                            BirthDate = new DateTime(2004, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2004, 4, 11, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Eskişehir",
                             CreaDate = new DateTime(2024, 8, 16, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "emine.cakir@hotmail.com",
@@ -273,7 +390,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 11,
-                            BirthDate = new DateTime(2002, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2002, 2, 25, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Trabzon",
                             CreaDate = new DateTime(2024, 8, 18, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "berk.polat@hotmail.com",
@@ -284,7 +401,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 12,
-                            BirthDate = new DateTime(2000, 10, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2000, 10, 16, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Mersin",
                             CreaDate = new DateTime(2024, 8, 21, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "deniz.sahin@hotmail.com",
@@ -295,7 +412,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 13,
-                            BirthDate = new DateTime(2001, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2001, 1, 8, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Gaziantep",
                             CreaDate = new DateTime(2024, 8, 21, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "seda.kurt@hotmail.com",
@@ -306,7 +423,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 14,
-                            BirthDate = new DateTime(1999, 11, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(1999, 11, 27, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Şanlıurfa",
                             CreaDate = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "merve.erdogan@hotmail.com",
@@ -317,7 +434,7 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 15,
-                            BirthDate = new DateTime(2003, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BirthDate = new DateTime(2003, 5, 3, 0, 0, 0, 0, DateTimeKind.Utc),
                             City = "Diyarbakır",
                             CreaDate = new DateTime(2024, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "huseyin.bozkurt@hotmail.com",

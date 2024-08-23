@@ -7,11 +7,16 @@ using StudentAttendanceTrackingApp.Business.Queries;
 using StudentAttendanceTrackingApp.Presentation.Common;
 using StudentAttendanceTrackingApp.Business.Commands;
 using StudentAttendanceTrackingApp.Business.Handlers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StudentAttendanceTrackingApp.Presentation.Controllers
 {
     [Route($"{Constant.RouteStudent}")]
     [ApiController]
+    [Authorize] // ekleyerek bu controller daki tüm actionlara authorize koşulu veriyoruz. herkese açık olmaktan çıkıyor.
+                // bir attribute un ([]) kontrol (çalışma) alanı bir action olabilir, bir controller olabilir veya tüm proje olabilir bunu da program.cs den 
+                // setleriz. fakat authorize ı tüm projeye verirsek bu şekilde authorize controller ını da kapsar proje düzgün çalışmaz. bunun için de authorize
+                // olmamasını istediğimiz yerlerde allowanonymous kullanabiliriz.
     public class StudentController : ControllerBase
     {
         private readonly IMediator mediator;

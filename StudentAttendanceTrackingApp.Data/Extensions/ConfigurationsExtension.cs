@@ -14,6 +14,7 @@ namespace StudentAttendanceTrackingApp.Data.Extensions
         {
             modelBuilder.ApplyConfiguration(new StudentConfiguration());
             modelBuilder.ApplyConfiguration(new LessonConfiguration());
+            modelBuilder.ApplyConfiguration(new ApiUserConfiguration());
         }
     }
 }
