@@ -25,6 +25,9 @@ namespace StudentAttendanceTrackingApp.Data.Configurations
 
             builder.Property(x => x.IsDeleted)
                    .IsRequired();
+
+            builder.Property(x => x.CreaDate)
+                   .IsRequired();
         }
     }
 }

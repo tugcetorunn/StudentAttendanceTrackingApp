@@ -17,12 +17,16 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
                 // bir attribute un ([]) kontrol (çalışma) alanı bir action olabilir, bir controller olabilir veya tüm proje olabilir bunu da program.cs den 
                 // setleriz. fakat authorize ı tüm projeye verirsek bu şekilde authorize controller ını da kapsar proje düzgün çalışmaz. bunun için de authorize
                 // olmamasını istediğimiz yerlerde allowanonymous kullanabiliriz.
-    public class StudentController : ControllerBase
+    public class StudentController : SATBaseController // controller ları aynı zamanda bir ara katmandan da geçirebiliriz. StudentController : ControllerBase
+                                                    // şeklinde kullandığımızda controller child, controllerBase parent oluyor. araya katman koyarak yani
+                                                    // controller ı örn. controllerX ten miras alıyor yapsak controllerX de controllerBase den miras alsın ki
+                                                    // controller özelliklerini kaybetmesin. bu durumda controllerX parent, controllerBase grandparent oluyor ve
+                                                    // controller için ek özellik ekleyebileceğimiz bir katman elde etmiş oluruz. Yeni bir controller ekleyerek
+                                                    // uygulayalım.
     {
-        private readonly IMediator mediator;
-        public StudentController(IMediator _mediator)
+        public StudentController(IMediator mediator) : base(mediator)
         {
-            mediator = _mediator;
+            // injection görevini ara katmana devretmiş olduk.
         }
 
         [HttpGet]
@@ -56,7 +60,7 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
         public async Task<ActionResult<bool>> CreateStudent([FromBody] CreateStudentCommand command) // Student olarak da parametre gönderilebilir
         {
             var res = await mediator.Send(command);
-            if (res == true)
+            if (res != null)
             {
                 return Ok(res);
             }
@@ -75,7 +79,7 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<Student?>> UpdateStudent([FromQuery] int id, [FromBody] UpdateStudentCommand command)
+        public async Task<ActionResult<Student?>> UpdateStudent([FromBody] UpdateStudentCommand command)
         {
             if (command == null)
             {
@@ -86,7 +90,7 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
 
             if (res == null)
             {
-                return NotFound($"Student with Id = {id} not found.");
+                return NotFound($"Student with Id = {command.Id} not found.");
             }
 
             return Ok(res);

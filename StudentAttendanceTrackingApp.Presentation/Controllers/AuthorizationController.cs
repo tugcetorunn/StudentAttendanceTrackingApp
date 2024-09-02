@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StudentAttendanceTrackingApp.Business.Commands;
+using StudentAttendanceTrackingApp.Business.Queries;
 using StudentAttendanceTrackingApp.Data.Entities;
+using StudentAttendanceTrackingApp.Presentation.Common;
 using TT.Core.Authorization;
 
 namespace StudentAttendanceTrackingApp.Presentation.Controllers
 {
-    [Route("api/[controller]")]
+    [Route($"{Constant.RouteAuth}")]
     [ApiController]
     public class AuthorizationController : ControllerBase
     {
@@ -24,17 +26,21 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
         // endpointlerimize 1 saniyede gelen istek sayısını ayarlayarak da kısıtlama koyabiliriz.
         [AllowAnonymous] // herkesin erişimine açık (public) olduğunu belirtir. yazmasak da burası bu şekilde çalışır. controller a yazılırsa tüm action ların erişimini açar.
         [HttpPost("sign-in")]
-        public async Task<ActionResult> SignIn([FromBody] SignInCommand command) // kullanıcı yetkili mi değil mi db de kaydı var mı diye kontrol eder.
-                                                                                 // ve ona göre token üretir. token üreten bu solution dışında bir service imiz var.
-                                                                                 // onu burada çağırıyoruz. (build ettiğimiz autorize projesini bu katmana
-                                                                                 // add reference diyerek browse kısmında dll dosyasını çekiyoruz. ve assemblies
-                                                                                 // kısmına proje yüklenmiş oluyor.)
+        public async Task<ActionResult> SignIn([FromQuery] string userName,[FromQuery] string password) // kullanıcı yetkili mi değil mi db de kaydı var mı diye kontrol eder.
+                                                                                            // ve ona göre token üretir. token üreten bu solution dışında bir service imiz var.
+                                                                                            // onu burada çağırıyoruz. (build ettiğimiz autorize projesini bu katmana
+                                                                                            // add reference diyerek browse kısmında dll dosyasını çekiyoruz. ve assemblies
+                                                                                            // kısmına proje yüklenmiş oluyor.)
         {
-            var res = await mediator.Send(command);
+            var sendValue = new SignInCommand() { UserName = userName, Password = password };
+
+            var res = await mediator.Send(sendValue);
+            var info = await mediator.Send(new GetUserByUsernameQuery() { UserName = userName }); // request ten gelen username ile db de eşleşen user
+                                                                                                  // instance ını getiriyor. bununla da token a bilgi gönderiyoruz.
             if (res)
             {
-                var token = tokenService.GenerateToken((command.Id).ToString(), command.Email);
-                return Ok(new { Token = token});
+                var token = tokenService.GenerateToken((info.Id).ToString(), info.Email); // db den eşleşen kullanıcının bilgilerini getirecek.
+                return Ok(new { Token = token}); 
             }
             return Unauthorized(res);
         }

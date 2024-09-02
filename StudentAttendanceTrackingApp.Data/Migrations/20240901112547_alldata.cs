@@ -94,16 +94,16 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                 columns: new[] { "Id", "CreaDate", "IsDeleted", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Matematik" },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Fizik" },
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Kimya" },
-                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Biyoloji" },
-                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Tarih" },
-                    { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Coğrafya" },
-                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "İngilizce" },
-                    { 8, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Edebiyat" },
-                    { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Bilgisayar Bilimleri" },
-                    { 10, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, "Beden Eğitimi" }
+                    { 1, new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6111), false, "Matematik" },
+                    { 2, new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6119), false, "Fizik" },
+                    { 3, new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6120), false, "Kimya" },
+                    { 4, new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6121), false, "Biyoloji" },
+                    { 5, new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6122), false, "Tarih" },
+                    { 6, new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6126), false, "Coğrafya" },
+                    { 7, new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6127), false, "İngilizce" },
+                    { 8, new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6128), false, "Edebiyat" },
+                    { 9, new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6129), false, "Bilgisayar Bilimleri" },
+                    { 10, new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6132), false, "Beden Eğitimi" }
                 });
 
             migrationBuilder.InsertData(
@@ -112,21 +112,21 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                 columns: new[] { "Id", "BirthDate", "City", "CreaDate", "Email", "FirstName", "IsDeleted", "LastName" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2000, 1, 15, 0, 0, 0, 0, DateTimeKind.Utc), "Istanbul", new DateTime(2024, 8, 2, 0, 0, 0, 0, DateTimeKind.Utc), "ali.yilmaz@hotmail.com", "Ali", false, "Yılmaz" },
-                    { 2, new DateTime(2001, 3, 22, 0, 0, 0, 0, DateTimeKind.Utc), "Ankara", new DateTime(2024, 8, 4, 0, 0, 0, 0, DateTimeKind.Utc), "ayse.kaya@hotmail.com", "Ayşe", false, "Kaya" },
-                    { 3, new DateTime(1999, 11, 30, 0, 0, 0, 0, DateTimeKind.Utc), "Izmir", new DateTime(2024, 8, 7, 0, 0, 0, 0, DateTimeKind.Utc), "mehmet.demir@hotmail.com", "Mehmet", false, "Demir" },
-                    { 4, new DateTime(2002, 5, 5, 0, 0, 0, 0, DateTimeKind.Utc), "Bursa", new DateTime(2024, 8, 8, 0, 0, 0, 0, DateTimeKind.Utc), "fatma.celik@hotmail.com", "Fatma", false, "Çelik" },
-                    { 5, new DateTime(2000, 8, 18, 0, 0, 0, 0, DateTimeKind.Utc), "Antalya", new DateTime(2024, 8, 9, 0, 0, 0, 0, DateTimeKind.Utc), "ahmet.yildiz@hotmail.com", "Ahmet", false, "Yıldız" },
-                    { 6, new DateTime(2003, 7, 10, 0, 0, 0, 0, DateTimeKind.Utc), "Adana", new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Utc), "elif.arslan@hotmail.com", "Elif", false, "Arslan" },
-                    { 7, new DateTime(1998, 9, 14, 0, 0, 0, 0, DateTimeKind.Utc), "Konya", new DateTime(2024, 8, 14, 0, 0, 0, 0, DateTimeKind.Utc), "murat.koc@hotmail.com", "Murat", false, "Koç" },
-                    { 8, new DateTime(2001, 12, 19, 0, 0, 0, 0, DateTimeKind.Utc), "Samsun", new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Utc), "zeynep.aydin@hotmail.com", "Zeynep", false, "Aydın" },
-                    { 9, new DateTime(1997, 6, 21, 0, 0, 0, 0, DateTimeKind.Utc), "Kayseri", new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Utc), "hasan.ozturk@hotmail.com", "Hasan", false, "Öztürk" },
-                    { 10, new DateTime(2004, 4, 11, 0, 0, 0, 0, DateTimeKind.Utc), "Eskişehir", new DateTime(2024, 8, 16, 0, 0, 0, 0, DateTimeKind.Utc), "emine.cakir@hotmail.com", "Emine", false, "Çakır" },
-                    { 11, new DateTime(2002, 2, 25, 0, 0, 0, 0, DateTimeKind.Utc), "Trabzon", new DateTime(2024, 8, 18, 0, 0, 0, 0, DateTimeKind.Utc), "berk.polat@hotmail.com", "Berk", false, "Polat" },
-                    { 12, new DateTime(2000, 10, 16, 0, 0, 0, 0, DateTimeKind.Utc), "Mersin", new DateTime(2024, 8, 21, 0, 0, 0, 0, DateTimeKind.Utc), "deniz.sahin@hotmail.com", "Deniz", false, "Şahin" },
-                    { 13, new DateTime(2001, 1, 8, 0, 0, 0, 0, DateTimeKind.Utc), "Gaziantep", new DateTime(2024, 8, 21, 0, 0, 0, 0, DateTimeKind.Utc), "seda.kurt@hotmail.com", "Seda", false, "Kurt" },
-                    { 14, new DateTime(1999, 11, 27, 0, 0, 0, 0, DateTimeKind.Utc), "Şanlıurfa", new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Utc), "merve.erdogan@hotmail.com", "Merve", false, "Erdoğan" },
-                    { 15, new DateTime(2003, 5, 3, 0, 0, 0, 0, DateTimeKind.Utc), "Diyarbakır", new DateTime(2024, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc), "huseyin.bozkurt@hotmail.com", "Hüseyin", false, "Bozkurt" }
+                    { 1, new DateTime(1988, 4, 11, 21, 0, 0, 0, DateTimeKind.Utc), "Iğdır", new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9834), "tuğra.yıldız.88@hotmail.com", "Tuğra", false, "Yıldız" },
+                    { 2, new DateTime(2005, 3, 23, 22, 0, 0, 0, DateTimeKind.Utc), "Sakarya", new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9854), "hande.derici.05@hotmail.com", "Hande", false, "Derici" },
+                    { 3, new DateTime(1998, 11, 27, 22, 0, 0, 0, DateTimeKind.Utc), "Şanlıurfa", new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9866), "kaan.yurt.98@hotmail.com", "Kaan", false, "Yurt" },
+                    { 4, new DateTime(2012, 12, 4, 22, 0, 0, 0, DateTimeKind.Utc), "Bayburt", new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9878), "yağmur.kaya.12@hotmail.com", "Yağmur", false, "Kaya" },
+                    { 5, new DateTime(1980, 10, 27, 22, 0, 0, 0, DateTimeKind.Utc), "Kilis", new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9888), "hande.boz.80@hotmail.com", "Hande", false, "Boz" },
+                    { 6, new DateTime(1975, 12, 22, 22, 0, 0, 0, DateTimeKind.Utc), "İzmir", new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9902), "yeşim.yüce.75@hotmail.com", "Yeşim", false, "Yüce" },
+                    { 7, new DateTime(1973, 5, 31, 21, 0, 0, 0, DateTimeKind.Utc), "Nevşehir", new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9911), "cansu.yurt.73@hotmail.com", "Cansu", false, "Yurt" },
+                    { 8, new DateTime(1972, 9, 7, 21, 0, 0, 0, DateTimeKind.Utc), "Mardin", new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9921), "mehmet.ergen.72@hotmail.com", "Mehmet", false, "Ergen" },
+                    { 9, new DateTime(2009, 1, 14, 22, 0, 0, 0, DateTimeKind.Utc), "Nevşehir", new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9930), "yağmur.sayan.09@hotmail.com", "Yağmur", false, "Sayan" },
+                    { 10, new DateTime(1999, 12, 10, 22, 0, 0, 0, DateTimeKind.Utc), "Mardin", new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(92), "kaan.yurt.99@hotmail.com", "Kaan", false, "Yurt" },
+                    { 11, new DateTime(1985, 1, 23, 22, 0, 0, 0, DateTimeKind.Utc), "Sakarya", new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(102), "utku.yar.85@hotmail.com", "Utku", false, "Yar" },
+                    { 12, new DateTime(1989, 12, 21, 22, 0, 0, 0, DateTimeKind.Utc), "Osmaniye", new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(112), "osman.öztürk.89@hotmail.com", "Osman", false, "Öztürk" },
+                    { 13, new DateTime(1978, 5, 30, 21, 0, 0, 0, DateTimeKind.Utc), "Zonguldak", new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(120), "kaan.derici.78@hotmail.com", "Kaan", false, "Derici" },
+                    { 14, new DateTime(1982, 9, 12, 21, 0, 0, 0, DateTimeKind.Utc), "Trabzon", new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(129), "buğra.yener.82@hotmail.com", "Buğra", false, "Yener" },
+                    { 15, new DateTime(2010, 1, 31, 22, 0, 0, 0, DateTimeKind.Utc), "İzmir", new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(138), "mehmet.yıldız.10@hotmail.com", "Mehmet", false, "Yıldız" }
                 });
         }
 

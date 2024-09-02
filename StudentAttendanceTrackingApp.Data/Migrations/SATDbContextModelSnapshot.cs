@@ -166,70 +166,70 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreaDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6111),
                             IsDeleted = false,
                             Name = "Matematik"
                         },
                         new
                         {
                             Id = 2,
-                            CreaDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6119),
                             IsDeleted = false,
                             Name = "Fizik"
                         },
                         new
                         {
                             Id = 3,
-                            CreaDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6120),
                             IsDeleted = false,
                             Name = "Kimya"
                         },
                         new
                         {
                             Id = 4,
-                            CreaDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6121),
                             IsDeleted = false,
                             Name = "Biyoloji"
                         },
                         new
                         {
                             Id = 5,
-                            CreaDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6122),
                             IsDeleted = false,
                             Name = "Tarih"
                         },
                         new
                         {
                             Id = 6,
-                            CreaDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6126),
                             IsDeleted = false,
                             Name = "Coğrafya"
                         },
                         new
                         {
                             Id = 7,
-                            CreaDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6127),
                             IsDeleted = false,
                             Name = "İngilizce"
                         },
                         new
                         {
                             Id = 8,
-                            CreaDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6128),
                             IsDeleted = false,
                             Name = "Edebiyat"
                         },
                         new
                         {
                             Id = 9,
-                            CreaDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6129),
                             IsDeleted = false,
                             Name = "Bilgisayar Bilimleri"
                         },
                         new
                         {
                             Id = 10,
-                            CreaDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(6132),
                             IsDeleted = false,
                             Name = "Beden Eğitimi"
                         });
@@ -280,167 +280,167 @@ namespace StudentAttendanceTrackingApp.Data.Migrations
                         new
                         {
                             Id = 1,
-                            BirthDate = new DateTime(2000, 1, 15, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Istanbul",
-                            CreaDate = new DateTime(2024, 8, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "ali.yilmaz@hotmail.com",
-                            FirstName = "Ali",
-                            IsDeleted = false,
-                            LastName = "Yılmaz"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            BirthDate = new DateTime(2001, 3, 22, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Ankara",
-                            CreaDate = new DateTime(2024, 8, 4, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "ayse.kaya@hotmail.com",
-                            FirstName = "Ayşe",
-                            IsDeleted = false,
-                            LastName = "Kaya"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            BirthDate = new DateTime(1999, 11, 30, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Izmir",
-                            CreaDate = new DateTime(2024, 8, 7, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "mehmet.demir@hotmail.com",
-                            FirstName = "Mehmet",
-                            IsDeleted = false,
-                            LastName = "Demir"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            BirthDate = new DateTime(2002, 5, 5, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Bursa",
-                            CreaDate = new DateTime(2024, 8, 8, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "fatma.celik@hotmail.com",
-                            FirstName = "Fatma",
-                            IsDeleted = false,
-                            LastName = "Çelik"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            BirthDate = new DateTime(2000, 8, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Antalya",
-                            CreaDate = new DateTime(2024, 8, 9, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "ahmet.yildiz@hotmail.com",
-                            FirstName = "Ahmet",
+                            BirthDate = new DateTime(1988, 4, 11, 21, 0, 0, 0, DateTimeKind.Utc),
+                            City = "Iğdır",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9834),
+                            Email = "tuğra.yıldız.88@hotmail.com",
+                            FirstName = "Tuğra",
                             IsDeleted = false,
                             LastName = "Yıldız"
                         },
                         new
                         {
-                            Id = 6,
-                            BirthDate = new DateTime(2003, 7, 10, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Adana",
-                            CreaDate = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "elif.arslan@hotmail.com",
-                            FirstName = "Elif",
+                            Id = 2,
+                            BirthDate = new DateTime(2005, 3, 23, 22, 0, 0, 0, DateTimeKind.Utc),
+                            City = "Sakarya",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9854),
+                            Email = "hande.derici.05@hotmail.com",
+                            FirstName = "Hande",
                             IsDeleted = false,
-                            LastName = "Arslan"
+                            LastName = "Derici"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BirthDate = new DateTime(1998, 11, 27, 22, 0, 0, 0, DateTimeKind.Utc),
+                            City = "Şanlıurfa",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9866),
+                            Email = "kaan.yurt.98@hotmail.com",
+                            FirstName = "Kaan",
+                            IsDeleted = false,
+                            LastName = "Yurt"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BirthDate = new DateTime(2012, 12, 4, 22, 0, 0, 0, DateTimeKind.Utc),
+                            City = "Bayburt",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9878),
+                            Email = "yağmur.kaya.12@hotmail.com",
+                            FirstName = "Yağmur",
+                            IsDeleted = false,
+                            LastName = "Kaya"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BirthDate = new DateTime(1980, 10, 27, 22, 0, 0, 0, DateTimeKind.Utc),
+                            City = "Kilis",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9888),
+                            Email = "hande.boz.80@hotmail.com",
+                            FirstName = "Hande",
+                            IsDeleted = false,
+                            LastName = "Boz"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BirthDate = new DateTime(1975, 12, 22, 22, 0, 0, 0, DateTimeKind.Utc),
+                            City = "İzmir",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9902),
+                            Email = "yeşim.yüce.75@hotmail.com",
+                            FirstName = "Yeşim",
+                            IsDeleted = false,
+                            LastName = "Yüce"
                         },
                         new
                         {
                             Id = 7,
-                            BirthDate = new DateTime(1998, 9, 14, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Konya",
-                            CreaDate = new DateTime(2024, 8, 14, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "murat.koc@hotmail.com",
-                            FirstName = "Murat",
+                            BirthDate = new DateTime(1973, 5, 31, 21, 0, 0, 0, DateTimeKind.Utc),
+                            City = "Nevşehir",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9911),
+                            Email = "cansu.yurt.73@hotmail.com",
+                            FirstName = "Cansu",
                             IsDeleted = false,
-                            LastName = "Koç"
+                            LastName = "Yurt"
                         },
                         new
                         {
                             Id = 8,
-                            BirthDate = new DateTime(2001, 12, 19, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Samsun",
-                            CreaDate = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "zeynep.aydin@hotmail.com",
-                            FirstName = "Zeynep",
+                            BirthDate = new DateTime(1972, 9, 7, 21, 0, 0, 0, DateTimeKind.Utc),
+                            City = "Mardin",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9921),
+                            Email = "mehmet.ergen.72@hotmail.com",
+                            FirstName = "Mehmet",
                             IsDeleted = false,
-                            LastName = "Aydın"
+                            LastName = "Ergen"
                         },
                         new
                         {
                             Id = 9,
-                            BirthDate = new DateTime(1997, 6, 21, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Kayseri",
-                            CreaDate = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "hasan.ozturk@hotmail.com",
-                            FirstName = "Hasan",
+                            BirthDate = new DateTime(2009, 1, 14, 22, 0, 0, 0, DateTimeKind.Utc),
+                            City = "Nevşehir",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 913, DateTimeKind.Utc).AddTicks(9930),
+                            Email = "yağmur.sayan.09@hotmail.com",
+                            FirstName = "Yağmur",
+                            IsDeleted = false,
+                            LastName = "Sayan"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            BirthDate = new DateTime(1999, 12, 10, 22, 0, 0, 0, DateTimeKind.Utc),
+                            City = "Mardin",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(92),
+                            Email = "kaan.yurt.99@hotmail.com",
+                            FirstName = "Kaan",
+                            IsDeleted = false,
+                            LastName = "Yurt"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            BirthDate = new DateTime(1985, 1, 23, 22, 0, 0, 0, DateTimeKind.Utc),
+                            City = "Sakarya",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(102),
+                            Email = "utku.yar.85@hotmail.com",
+                            FirstName = "Utku",
+                            IsDeleted = false,
+                            LastName = "Yar"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            BirthDate = new DateTime(1989, 12, 21, 22, 0, 0, 0, DateTimeKind.Utc),
+                            City = "Osmaniye",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(112),
+                            Email = "osman.öztürk.89@hotmail.com",
+                            FirstName = "Osman",
                             IsDeleted = false,
                             LastName = "Öztürk"
                         },
                         new
                         {
-                            Id = 10,
-                            BirthDate = new DateTime(2004, 4, 11, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Eskişehir",
-                            CreaDate = new DateTime(2024, 8, 16, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "emine.cakir@hotmail.com",
-                            FirstName = "Emine",
-                            IsDeleted = false,
-                            LastName = "Çakır"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            BirthDate = new DateTime(2002, 2, 25, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Trabzon",
-                            CreaDate = new DateTime(2024, 8, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "berk.polat@hotmail.com",
-                            FirstName = "Berk",
-                            IsDeleted = false,
-                            LastName = "Polat"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            BirthDate = new DateTime(2000, 10, 16, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Mersin",
-                            CreaDate = new DateTime(2024, 8, 21, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "deniz.sahin@hotmail.com",
-                            FirstName = "Deniz",
-                            IsDeleted = false,
-                            LastName = "Şahin"
-                        },
-                        new
-                        {
                             Id = 13,
-                            BirthDate = new DateTime(2001, 1, 8, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Gaziantep",
-                            CreaDate = new DateTime(2024, 8, 21, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "seda.kurt@hotmail.com",
-                            FirstName = "Seda",
+                            BirthDate = new DateTime(1978, 5, 30, 21, 0, 0, 0, DateTimeKind.Utc),
+                            City = "Zonguldak",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(120),
+                            Email = "kaan.derici.78@hotmail.com",
+                            FirstName = "Kaan",
                             IsDeleted = false,
-                            LastName = "Kurt"
+                            LastName = "Derici"
                         },
                         new
                         {
                             Id = 14,
-                            BirthDate = new DateTime(1999, 11, 27, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Şanlıurfa",
-                            CreaDate = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "merve.erdogan@hotmail.com",
-                            FirstName = "Merve",
+                            BirthDate = new DateTime(1982, 9, 12, 21, 0, 0, 0, DateTimeKind.Utc),
+                            City = "Trabzon",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(129),
+                            Email = "buğra.yener.82@hotmail.com",
+                            FirstName = "Buğra",
                             IsDeleted = false,
-                            LastName = "Erdoğan"
+                            LastName = "Yener"
                         },
                         new
                         {
                             Id = 15,
-                            BirthDate = new DateTime(2003, 5, 3, 0, 0, 0, 0, DateTimeKind.Utc),
-                            City = "Diyarbakır",
-                            CreaDate = new DateTime(2024, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "huseyin.bozkurt@hotmail.com",
-                            FirstName = "Hüseyin",
+                            BirthDate = new DateTime(2010, 1, 31, 22, 0, 0, 0, DateTimeKind.Utc),
+                            City = "İzmir",
+                            CreaDate = new DateTime(2024, 9, 1, 11, 25, 46, 914, DateTimeKind.Utc).AddTicks(138),
+                            Email = "mehmet.yıldız.10@hotmail.com",
+                            FirstName = "Mehmet",
                             IsDeleted = false,
-                            LastName = "Bozkurt"
+                            LastName = "Yıldız"
                         });
                 });
 #pragma warning restore 612, 618

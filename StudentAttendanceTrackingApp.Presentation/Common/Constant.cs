@@ -6,6 +6,7 @@
         public const string Version = "v1/";
         public const string RouteStudent = $"{BaseRoute}{Version}Student";
         public const string RouteLesson = $"{BaseRoute}{Version}Lesson";
+        public const string RouteAuth = $"{BaseRoute}{Version}Auth";
 
         
         

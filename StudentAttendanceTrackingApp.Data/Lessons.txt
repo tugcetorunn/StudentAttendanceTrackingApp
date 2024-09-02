@@ -1,0 +1,10 @@
+﻿Matematik
+Fizik
+Kimya
+Biyoloji
+Tarih
+Coğrafya
+İngilizce
+Edebiyat
+Bilgisayar Bilimleri
+Beden Eğitimi
