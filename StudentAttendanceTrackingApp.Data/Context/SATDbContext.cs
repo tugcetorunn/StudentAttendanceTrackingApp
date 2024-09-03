@@ -1,13 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using StudentAttendanceTrackingApp.Data.Configurations;
-using StudentAttendanceTrackingApp.Data.Entities;
-using StudentAttendanceTrackingApp.Data.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace StudentAttendanceTrackingApp.Data
 {
     public class SATDbContext : DbContext

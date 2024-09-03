@@ -1,11 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace StudentAttendanceTrackingApp.Data.Configurations
 {
     public class StudentConfiguration : IEntityTypeConfiguration<Student>
@@ -39,7 +32,8 @@ namespace StudentAttendanceTrackingApp.Data.Configurations
                    .HasMaxLength(30);
 
             builder.Property(x => x.CreaDate)
-                   .IsRequired();
+                   .IsRequired()
+                   .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             builder.Property(x => x.IsDeleted)
                    .IsRequired();

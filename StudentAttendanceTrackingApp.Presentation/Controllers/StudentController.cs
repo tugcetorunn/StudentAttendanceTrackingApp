@@ -1,13 +1,5 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
-using StudentAttendanceTrackingApp.Data;
-using Microsoft.AspNetCore.Mvc.Abstractions;
-using StudentAttendanceTrackingApp.Business.Queries;
-using StudentAttendanceTrackingApp.Presentation.Common;
-using StudentAttendanceTrackingApp.Business.Commands;
-using StudentAttendanceTrackingApp.Business.Handlers;
-using Microsoft.AspNetCore.Authorization;
 
 namespace StudentAttendanceTrackingApp.Presentation.Controllers
 {
@@ -30,23 +22,27 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(401)]
-        [ProducesResponseType(500)] // response olasılıkları
-        public async Task<ActionResult<List<Student?>>> GetStudents() // IActionResult generic kullanılamıyor, bu yüzden actionResult kullandık.
+        [ProducesResponseType(typeof(Response<List<Student>>), 200)]
+        [ProducesResponseType(typeof(Response<List<Student>>), 400)]
+        [ProducesResponseType(typeof(Response<List<Student>>), 401)]
+        [ProducesResponseType(typeof(Response<List<Student>>), 500)] // response olasılıkları
+        public async Task<IActionResult> GetStudents() // IActionResult generic kullanılamıyor, bu yüzden actionResult kullandık.
         {
-            var students = await mediator.Send(new GetStudentsQuery());
-            if (students != null)
+            var res = await mediator.Send(new GetStudentsQuery());
+            if (res != null)
             {
-                return Ok(students);
+                return Ok(res);
             }
-            return BadRequest();
+            return BadRequest(res);
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(200)]
-        public async Task<ActionResult<Student?>> GetStudentById(int id)
+        [ProducesResponseType(typeof(Response<Student>), 200)]
+        [ProducesResponseType(typeof(Response<Student>), 400)]
+        [ProducesResponseType(typeof(Response<Student>), 401)]
+        [ProducesResponseType(typeof(Response<Student>), 404)]
+        [ProducesResponseType(typeof(Response<Student>), 500)]
+        public async Task<IActionResult> GetStudentById([FromRoute] int id)
         {
             var student = await mediator.Send(new GetStudentByIdQuery() { Id = id});
             if (student != null)
@@ -57,21 +53,30 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<bool>> CreateStudent([FromBody] CreateStudentCommand command) // Student olarak da parametre gönderilebilir
+        [ProducesResponseType(typeof(Response<Student>), 201)]
+        [ProducesResponseType(typeof(Response<Student>), 400)]
+        [ProducesResponseType(typeof(Response<Student>), 401)]
+        [ProducesResponseType(typeof(Response<Student>), 500)]
+        public async Task<IActionResult> CreateStudent([FromBody] CreateStudentCommand command) // Student olarak da parametre gönderilebilir
         {
             var res = await mediator.Send(command);
             if (res != null)
             {
                 return Ok(res);
             }
-            return BadRequest();
+            return Unauthorized(res);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<bool>> DeleteStudent(int id)
+        [ProducesResponseType(typeof(Response<int>), 200)]
+        [ProducesResponseType(typeof(Response<int>), 400)]
+        [ProducesResponseType(typeof(Response<int>), 401)]
+        [ProducesResponseType(typeof(Response<int>), 404)]
+        [ProducesResponseType(typeof(Response<int>), 500)]
+        public async Task<IActionResult> DeleteStudent(int id)
         {
             var res = await mediator.Send(new DeleteStudentCommand() { Id = id });
-            if (res == true)
+            if (res.IsSuccess == true)
             {
                 return Ok(res);
             }
@@ -79,7 +84,12 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<Student?>> UpdateStudent([FromBody] UpdateStudentCommand command)
+        [ProducesResponseType(typeof(Response<Student?>), 200)]
+        [ProducesResponseType(typeof(Response<Student?>), 400)]
+        [ProducesResponseType(typeof(Response<Student?>), 401)]
+        [ProducesResponseType(typeof(Response<Student?>), 404)]
+        [ProducesResponseType(typeof(Response<Student?>), 500)]
+        public async Task<IActionResult> UpdateStudent([FromBody] UpdateStudentCommand command)
         {
             if (command == null)
             {
