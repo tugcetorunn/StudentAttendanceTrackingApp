@@ -1,13 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using StudentAttendanceTrackingApp.Business.Commands;
-using StudentAttendanceTrackingApp.Business.Queries;
-using StudentAttendanceTrackingApp.Data.Entities;
-using StudentAttendanceTrackingApp.Presentation.Common;
-using TT.Core.Authorization;
-
+﻿
 namespace StudentAttendanceTrackingApp.Presentation.Controllers
 {
     [Route($"{Constant.RouteAuth}")]

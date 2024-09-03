@@ -1,13 +1,3 @@
-using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using StudentAttendanceTrackingApp.Business.Repositories.Abstracts;
-using StudentAttendanceTrackingApp.Business.Repositories.Concrete;
-using StudentAttendanceTrackingApp.Data;
-using StudentAttendanceTrackingApp.Presentation.Extensions;
-using System.Reflection;
-using System.Text;
-using TT.Core.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,11 +15,14 @@ builder.Services.RegisterHandlers();
 // mediator entegration
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())); // versiyon 12 den öncesi farklý sonrasý farklý
 
+// fluent validation entegration (FluentValidation.AspNetCore yüklemek gerekiyor)
+builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateStudentCommandValidator>());
+
 // mediator için injection yönlendirmesi. (ne zaman ýmediator ý çaðýrýrsak bana mediator ý çalýþtýr.)
 builder.Services.AddScoped<IMediator, Mediator>();
 
-// token production için injection yönlendirmesi (dependency injection þartý)
- builder.Services.AddScoped<TokenService>();
+// token validation service için injection yönlendirmesi
+builder.Services.AddScoped<ITokenValidationService, TokenValidationService>();
 
 // repository injection yönlendirmesi
 builder.Services.AddTransient<IStudentRepository, StudentRepository>();
@@ -38,6 +31,7 @@ builder.Services.AddTransient<ILessonRepository, LessonRepository>();
 
 builder.Services.AddDbContext<SATDbContext>(/*options => options.UseNpgsql(@"Host=localhost;Database=postgres;Username=tt;Password=tt2727;Search Path=satapp")*/);
 
+// yapýlandýrma ayarlarýný okuma
 // authorization dll projesinde tanýmladýðýmýz bu bilgileri bu projede de configuration dan çekmek için burada tanýmlýyoruz.
 // dll projesinde configuration class ýný inject etmiþtik fakar burasý program.cs, burada class method yapýsý olmadýðý için builder burada bunu saðlayacak. 
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
@@ -46,6 +40,10 @@ var issuer = jwtSettings["Issuer"]; // token ý oluþturan sunucu
 var audience = jwtSettings["Audience"]; // token ý kullanacak kiþi, uygulama, site. örneðin bir sitenin kullanýmýna özel bir api projemiz varsa buraya yazarýz.
 var expireMinutes = int.Parse(jwtSettings["ExpireMinutes"]); // api yi tüketme eriþim süresi (dk)
 // burada tanýmlamasak da diðer projede tanýmladýðýmýz yerlerden çeker mi teste et...
+
+// tokenService'i yapýlandýrma ayarlarý ile kaydetme
+// token production için injection yönlendirmesi (dependency injection þartý)
+builder.Services.AddScoped<TokenService>(provider => new TokenService(builder.Configuration, secretKey, issuer, audience));
 
 // jwt authentication ekleme
 builder.Services.AddAuthentication(options =>

@@ -1,0 +1,16 @@
+﻿global using Ardalis.Specification;
+global using StudentAttendanceTrackingApp.Data;
+global using StudentAttendanceTrackingApp.Data.Entities;
+global using Ardalis.Specification.EntityFrameworkCore;
+global using StudentAttendanceTrackingApp.Business.Repositories.Abstracts;
+global using MediatR;
+global using StudentAttendanceTrackingApp.Business.Queries;
+global using StudentAttendanceTrackingApp.Business.Specification.Users;
+global using StudentAttendanceTrackingApp.Business.Commands;
+global using StudentAttendanceTrackingApp.Business.Specification.Lessons;
+global using StudentAttendanceTrackingApp.Business.Specification.Students;
+global using TT.Core.ApiResponse;
+global using FluentValidation;
+global using Microsoft.AspNetCore.Http;
+global using StudentAttendanceTrackingApp.Business.TokenValidation.Abstract;
+global using TT.Core.Authorization;

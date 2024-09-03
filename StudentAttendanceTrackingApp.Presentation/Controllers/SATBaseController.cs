@@ -1,6 +1,5 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.EntityFrameworkCore.Design.Internal;
 
 namespace StudentAttendanceTrackingApp.Presentation.Controllers
 {

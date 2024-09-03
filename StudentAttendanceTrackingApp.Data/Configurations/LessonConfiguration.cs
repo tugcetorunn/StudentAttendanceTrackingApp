@@ -1,11 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace StudentAttendanceTrackingApp.Data.Configurations
 {
     public class LessonConfiguration : IEntityTypeConfiguration<Lesson>
@@ -27,7 +20,8 @@ namespace StudentAttendanceTrackingApp.Data.Configurations
                    .IsRequired();
 
             builder.Property(x => x.CreaDate)
-                   .IsRequired();
+                   .IsRequired()
+                   .HasDefaultValueSql("CURRENT_TIMESTAMP");
         }
     }
 }

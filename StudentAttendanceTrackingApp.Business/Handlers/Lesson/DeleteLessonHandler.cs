@@ -1,13 +1,4 @@
-﻿using MediatR;
-using StudentAttendanceTrackingApp.Business.Commands;
-using StudentAttendanceTrackingApp.Business.Repositories.Abstracts;
-using StudentAttendanceTrackingApp.Business.Specification.Lessons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace StudentAttendanceTrackingApp.Business.Handlers
 {
     public class DeleteLessonHandler : IRequestHandler<DeleteLessonCommand, bool>

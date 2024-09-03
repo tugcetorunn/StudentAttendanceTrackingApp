@@ -1,14 +1,4 @@
-﻿using MediatR;
-using StudentAttendanceTrackingApp.Business.Queries;
-using StudentAttendanceTrackingApp.Business.Repositories.Abstracts;
-using StudentAttendanceTrackingApp.Business.Specification.Users;
-using StudentAttendanceTrackingApp.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace StudentAttendanceTrackingApp.Business.Handlers.Auth
 {
     public class GetUserByUsernameHandler : IRequestHandler<GetUserByUsernameQuery, ApiUser>

@@ -1,12 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using StudentAttendanceTrackingApp.Business.Commands;
-using StudentAttendanceTrackingApp.Business.Queries;
-using StudentAttendanceTrackingApp.Data;
-using StudentAttendanceTrackingApp.Presentation.Common;
-
+﻿
 namespace StudentAttendanceTrackingApp.Presentation.Controllers
 {
     [Route($"{Constant.RouteLesson}")]

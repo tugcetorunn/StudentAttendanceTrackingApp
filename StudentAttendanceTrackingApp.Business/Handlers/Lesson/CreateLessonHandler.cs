@@ -1,13 +1,4 @@
-﻿using MediatR;
-using StudentAttendanceTrackingApp.Business.Commands;
-using StudentAttendanceTrackingApp.Business.Repositories.Abstracts;
-using StudentAttendanceTrackingApp.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace StudentAttendanceTrackingApp.Business.Handlers
 {
     public class CreateLessonHandler : IRequestHandler<CreateLessonCommand, Lesson>
@@ -28,7 +19,7 @@ namespace StudentAttendanceTrackingApp.Business.Handlers
                 IsDeleted = false
             };
 
-            return await lessonRepository.AddAsync(newLesson);
+            return await lessonRepository.AddAsync(newLesson, cancellationToken);
         }
     }
 }
