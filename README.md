@@ -35,7 +35,7 @@ It was used to integrate into the project Fluent Validation library.
 #### CorePackageAuthorization
 It was used to create business rules for JWT bearer.
 #### MediatR - CQRS
-`CQRS` design pattern was used to separate crud operations according to whether they manipulate the database or not, thus providing faster output. As its name suggests, the `Mediator` pattern mediates the cqrs structure. It prevents controllers from establishing chaotic dependencies by communicating directly with handlers. The mediator knows which handlers will be called only when we send commands and queries with the "Send()" method it contains.
+`CQRS` design pattern was used to separate crud operations according to whether they manipulate the database or not, thus providing faster output. As its name suggests, the `Mediator` pattern mediates the cqrs structure. It prevents controllers from establishing chaotic dependencies by communicating directly with handlers. The mediator knows which handlers will be called only when we send commands and queries with the "Send()" method it contains. MediatR design pattern cannot be used without CQRS structure.
 #### Ardalis.Specification
 It is used to define and manage query operations centrally with the specification design pattern. It also allows creating a more abstract layer with the repository design pattern.
 #### Ardalis.Specification.EntityFrameworkCore
