@@ -2,6 +2,8 @@
 
 Student Attendance Tracking App is an educational project that aims to use many design patterns and packages effectively as an ASP.NET Core Web API (.NET 8) project. The latest version of ASP.NET Core packages and current libraries were used. It was built with N-Tier Architecture. The aim of the project is to create a list of the courses that students are or are not attending.
 
+![Api splash screen](https://i.imgur.com/ULYv0az.png)
+
 ## Table Of Contents
 - [Things to do before starting the program](https://github.com/tugcetorunn/StudentAttendanceTrackingApp/tree/master?tab=readme-ov-file#things-to-do-before-starting-the-program)
 - [Project Layers](https://github.com/tugcetorunn/StudentAttendanceTrackingApp/tree/master?tab=readme-ov-file#project-layers)
