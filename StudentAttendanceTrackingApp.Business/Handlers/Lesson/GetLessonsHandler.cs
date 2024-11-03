@@ -1,16 +1,19 @@
 ﻿
 namespace StudentAttendanceTrackingApp.Business.Handlers
 {
-    public class GetLessonsHandler : IRequestHandler<GetLessonsQuery, List<Lesson>>
+    public class GetLessonsHandler : IRequestHandler<GetLessonsQuery, List<LessonDto>>
     {
         private readonly ILessonRepository lessonRepository;
-        public GetLessonsHandler(ILessonRepository _lessonRepository)
+        private readonly IMapper mapper;
+        public GetLessonsHandler(ILessonRepository _lessonRepository, IMapper _mapper)
         {
             lessonRepository = _lessonRepository;
+            mapper = _mapper;
         }
-        public async Task<List<Lesson>> Handle(GetLessonsQuery request, CancellationToken cancellationToken)
+        public async Task<List<LessonDto>> Handle(GetLessonsQuery request, CancellationToken cancellationToken)
         {
-            return await lessonRepository.ListAsync(new GetLessonsReadonlySpec(), cancellationToken);
+            var lessons = await lessonRepository.ListAsync(new GetLessonsReadonlySpec(), cancellationToken);
+            return mapper.Map<List<LessonDto>>(lessons);    
         }
     }
 }

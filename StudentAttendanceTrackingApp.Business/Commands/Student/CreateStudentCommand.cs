@@ -1,7 +1,7 @@
 ﻿
 namespace StudentAttendanceTrackingApp.Business.Commands
 {
-    public class CreateStudentCommand : IRequest<Response<Student>>
+    public class CreateStudentCommand : IRequest<Response<StudentDto>>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

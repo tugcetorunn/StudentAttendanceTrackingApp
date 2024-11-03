@@ -1,5 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
+using StudentAttendanceTrackingApp.Business.Dtos;
+using StudentAttendanceTrackingApp.Business.Queries.Student;
 
 namespace StudentAttendanceTrackingApp.Presentation.Controllers
 {
@@ -22,11 +24,11 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(Response<List<Student>>), 200)]
-        [ProducesResponseType(typeof(Response<List<Student>>), 400)]
-        [ProducesResponseType(typeof(Response<List<Student>>), 401)]
-        [ProducesResponseType(typeof(Response<List<Student>>), 500)] // response olasılıkları
-        public async Task<IActionResult> GetStudents() // IActionResult generic kullanılamıyor, bu yüzden actionResult kullandık.
+        [ProducesResponseType(typeof(Response<List<StudentDto>>), 200)]
+        [ProducesResponseType(typeof(Response<List<StudentDto>>), 400)]
+        [ProducesResponseType(typeof(Response<List<StudentDto>>), 401)]
+        [ProducesResponseType(typeof(Response<List<StudentDto>>), 500)] // response olasılıkları
+        public async Task<IActionResult> GetStudents()
         {
             var res = await mediator.Send(new GetStudentsQuery());
             if (res != null)
@@ -36,12 +38,29 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
             return BadRequest(res);
         }
 
+        // pagination 2. adım
+
+        [HttpGet("GetStudentsWithPagination")]
+        [ProducesResponseType(typeof(Response<List<StudentDto>>), 200)]
+        [ProducesResponseType(typeof(Response<List<StudentDto>>), 400)]
+        [ProducesResponseType(typeof(Response<List<StudentDto>>), 401)]
+        [ProducesResponseType(typeof(Response<List<StudentDto>>), 500)]
+        public async Task<IActionResult> GetStudentsWithPagination([FromQuery] GetStudentsWithPaginationQuery query) 
+        {
+            var res = await mediator.Send(query);
+            if (res != null)
+            {
+                return Ok(res);
+            }
+            return BadRequest(res);
+        }
+
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Response<Student>), 200)]
-        [ProducesResponseType(typeof(Response<Student>), 400)]
-        [ProducesResponseType(typeof(Response<Student>), 401)]
-        [ProducesResponseType(typeof(Response<Student>), 404)]
-        [ProducesResponseType(typeof(Response<Student>), 500)]
+        [ProducesResponseType(typeof(Response<StudentDto>), 200)]
+        [ProducesResponseType(typeof(Response<StudentDto>), 400)]
+        [ProducesResponseType(typeof(Response<StudentDto>), 401)]
+        [ProducesResponseType(typeof(Response<StudentDto>), 404)]
+        [ProducesResponseType(typeof(Response<StudentDto>), 500)]
         public async Task<IActionResult> GetStudentById([FromRoute] int id)
         {
             var student = await mediator.Send(new GetStudentByIdQuery() { Id = id});
@@ -53,10 +72,10 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(Response<Student>), 201)]
-        [ProducesResponseType(typeof(Response<Student>), 400)]
-        [ProducesResponseType(typeof(Response<Student>), 401)]
-        [ProducesResponseType(typeof(Response<Student>), 500)]
+        [ProducesResponseType(typeof(Response<StudentDto>), 201)]
+        [ProducesResponseType(typeof(Response<StudentDto>), 400)]
+        [ProducesResponseType(typeof(Response<StudentDto>), 401)]
+        [ProducesResponseType(typeof(Response<StudentDto>), 500)]
         public async Task<IActionResult> CreateStudent([FromBody] CreateStudentCommand command) // Student olarak da parametre gönderilebilir
         {
             var res = await mediator.Send(command);
@@ -84,11 +103,11 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
         }
 
         [HttpPut]
-        [ProducesResponseType(typeof(Response<Student?>), 200)]
-        [ProducesResponseType(typeof(Response<Student?>), 400)]
-        [ProducesResponseType(typeof(Response<Student?>), 401)]
-        [ProducesResponseType(typeof(Response<Student?>), 404)]
-        [ProducesResponseType(typeof(Response<Student?>), 500)]
+        [ProducesResponseType(typeof(Response<StudentDto?>), 200)]
+        [ProducesResponseType(typeof(Response<StudentDto?>), 400)]
+        [ProducesResponseType(typeof(Response<StudentDto?>), 401)]
+        [ProducesResponseType(typeof(Response<StudentDto?>), 404)]
+        [ProducesResponseType(typeof(Response<StudentDto?>), 500)]
         public async Task<IActionResult> UpdateStudent([FromBody] UpdateStudentCommand command)
         {
             if (command == null)

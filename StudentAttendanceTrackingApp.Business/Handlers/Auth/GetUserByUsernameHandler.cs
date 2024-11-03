@@ -1,19 +1,22 @@
 ﻿
 namespace StudentAttendanceTrackingApp.Business.Handlers.Auth
 {
-    public class GetUserByUsernameHandler : IRequestHandler<GetUserByUsernameQuery, ApiUser>
+    public class GetUserByUsernameHandler : IRequestHandler<GetUserByUsernameQuery, ApiUserDto>
     {
         private readonly IApiUserRepository apiUserRepository;
+        private readonly IMapper mapper;
 
-        public GetUserByUsernameHandler(IApiUserRepository _apiUserRepository)
+        public GetUserByUsernameHandler(IApiUserRepository _apiUserRepository, IMapper _mapper)
         {
             apiUserRepository = _apiUserRepository;
+            mapper = _mapper;
         }
 
-        public async Task<ApiUser> Handle(GetUserByUsernameQuery request, CancellationToken cancellationToken)
+        public async Task<ApiUserDto> Handle(GetUserByUsernameQuery request, CancellationToken cancellationToken)
         {
             var spec = new GetByUsernameReadonlySpec(request.UserName);
-            return await apiUserRepository.GetBySpecAsync(spec, cancellationToken);
+            var apiUser = await apiUserRepository.GetBySpecAsync(spec, cancellationToken);
+            return mapper.Map<ApiUserDto>(apiUser);
         }
     }
 }

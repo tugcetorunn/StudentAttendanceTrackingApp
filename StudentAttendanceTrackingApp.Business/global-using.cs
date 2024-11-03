@@ -14,3 +14,7 @@ global using FluentValidation;
 global using Microsoft.AspNetCore.Http;
 global using StudentAttendanceTrackingApp.Business.TokenValidation.Abstract;
 global using TT.Core.Authorization;
+global using AutoMapper;
+global using StudentAttendanceTrackingApp.Business.Dtos;
+global using StudentAttendanceTrackingApp.Business.Queries.Student;
+global using System.Net;

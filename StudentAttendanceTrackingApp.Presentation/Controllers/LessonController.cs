@@ -1,4 +1,6 @@
 ﻿
+using StudentAttendanceTrackingApp.Business.Dtos;
+
 namespace StudentAttendanceTrackingApp.Presentation.Controllers
 {
     [Route($"{Constant.RouteLesson}")]
@@ -10,7 +12,7 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Lesson>>> GetLessons() // bir işlem diğerini bloklamasın diye async metod yapıyoruz genelde.
+        public async Task<ActionResult<List<LessonDto>>> GetLessons() // bir işlem diğerini bloklamasın diye async metod yapıyoruz genelde.
         {
             var res = await mediator.Send(new GetLessonsQuery());
             if (res != null)
@@ -21,7 +23,7 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Lesson>> GetLessonById(int id)
+        public async Task<ActionResult<LessonDto>> GetLessonById(int id)
         {
             var res = await mediator.Send(new GetLessonByIdQuery() { Id = id });
             if (res != null)
@@ -32,7 +34,7 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Lesson>> CreateLesson([FromBody] CreateLessonCommand command)
+        public async Task<ActionResult<LessonDto>> CreateLesson([FromBody] CreateLessonCommand command)
         {
             var res = await mediator.Send(new CreateLessonCommand() { Name = command.Name });
             if (res != null)
@@ -54,7 +56,7 @@ namespace StudentAttendanceTrackingApp.Presentation.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<Lesson>> UpdateLesson([FromBody] UpdateLessonCommand command)
+        public async Task<ActionResult<LessonDto>> UpdateLesson([FromBody] UpdateLessonCommand command)
         {
             var res = await mediator.Send(command);
             if (res != null)

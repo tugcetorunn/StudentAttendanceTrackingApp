@@ -1,4 +1,6 @@
 ﻿
+using System.Net;
+
 namespace StudentAttendanceTrackingApp.Business.Handlers
 {
     public class DeleteStudentHandler : IRequestHandler<DeleteStudentCommand, Response<int>>
@@ -23,7 +25,7 @@ namespace StudentAttendanceTrackingApp.Business.Handlers
             {
                 return new Response<int>
                 {
-                    StatusCode = 401,
+                    StatusCode = (int)HttpStatusCode.Unauthorized,
                     IsSuccess = false,
                     Message = "Expired or invalid token.",
                     Error = "Unauthorized",
@@ -37,7 +39,7 @@ namespace StudentAttendanceTrackingApp.Business.Handlers
             {
                 return new Response<int>
                 {
-                    StatusCode = 400,
+                    StatusCode = (int)HttpStatusCode.BadRequest,
                     IsSuccess = false,
                     Message = "Invalid student ID.",
                     Error = "BadRequest",
@@ -53,7 +55,7 @@ namespace StudentAttendanceTrackingApp.Business.Handlers
                 {
                     return new Response<int>
                     {
-                        StatusCode = 404,
+                        StatusCode = (int)HttpStatusCode.NotFound,
                         IsSuccess = false,
                         Message = "The student not found.",
                         Error = "NotFound",
@@ -66,7 +68,7 @@ namespace StudentAttendanceTrackingApp.Business.Handlers
 
                 return new Response<int>
                 {
-                    StatusCode = 200,
+                    StatusCode = (int)HttpStatusCode.OK,
                     IsSuccess = true,
                     Message = "The student deleted successfully.",
                     Error = null,
@@ -77,7 +79,7 @@ namespace StudentAttendanceTrackingApp.Business.Handlers
             {
                 return new Response<int>
                 {
-                    StatusCode = 500,
+                    StatusCode = (int)HttpStatusCode.InternalServerError,
                     IsSuccess = false,
                     Message = "An error occurred while deleting the student.",
                     Error = ex.Message,
