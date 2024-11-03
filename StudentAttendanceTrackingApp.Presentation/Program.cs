@@ -71,6 +71,12 @@ builder.Services.AddAuthentication(); // yukarýdaki komut özellik ekliyor burada
 
 builder.Services.AddSwaggerConfiguration();
 
+// Automapper 4. adým DI Container adding
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly()); // aslýnda profile extension ý olmadan assembly den görmesi gerekir bu satýrla neden gelmiyor?
+
+// Automapper 6. adým profile extension ýn çalýþtýrýlmasý
+builder.Services.AutoMapperProfilesRegister();
+
 // ardalis specification
 // iþ kurallarýný ve sorgulamalarý daha düzenli ve yeniden kullanýlabilir bir þekilde yapmak için kullanýlýr.
 // yazýlýmda ayný þeyi birden çok kez kullanýyorsak bu iþi tek yerden yönetmenin yolunu bulmalýyýz.
@@ -98,7 +104,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthentication();
-app.UseAuthorization(); // kimlik doðrulamasýný yapar.
+app.UseAuthentication(); // kimlik doðrulamasýný yapar.
+app.UseAuthorization(); 
 
 app.Run();

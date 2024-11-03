@@ -1,7 +1,7 @@
 ﻿
 namespace StudentAttendanceTrackingApp.Business.Queries
 {
-    public class GetLessonsQuery : IRequest<List<Lesson>>
+    public class GetLessonsQuery : IRequest<List<LessonDto>>
     {
     }
 }

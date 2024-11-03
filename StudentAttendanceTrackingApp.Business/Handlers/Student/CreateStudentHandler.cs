@@ -1,16 +1,20 @@
 ﻿
+
+
 namespace StudentAttendanceTrackingApp.Business.Handlers
 {
-    public class CreateStudentHandler : IRequestHandler<CreateStudentCommand, Response<Student>>
+    public class CreateStudentHandler : IRequestHandler<CreateStudentCommand, Response<StudentDto>>
     {
         private readonly IStudentRepository studentRepository;
         private readonly IValidator<CreateStudentCommand> validator;
-        public CreateStudentHandler(IStudentRepository _studentRepository, IValidator<CreateStudentCommand> _validator)
+        private readonly IMapper mapper;
+        public CreateStudentHandler(IStudentRepository _studentRepository, IValidator<CreateStudentCommand> _validator, IMapper _mapper)
         {
             studentRepository = _studentRepository;
             validator = _validator;
+            mapper = _mapper;
         }
-        public async Task<Response<Student>> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
+        public async Task<Response<StudentDto>> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
         {
             // programı çalıştırdığımızda controller a gitmeden validator ı çalıştırıyor. ve çıktıyı validator ın kendi middleware ini çalıştırıyor.
             // yani kod buraya gelmiyor bu yüzden bizim standart response umuzla da çıktı vermiyor. bunun için validation kurallarını ayrı bir class ta
@@ -23,9 +27,9 @@ namespace StudentAttendanceTrackingApp.Business.Handlers
             {
                 var errors = string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage));
 
-                return new Response<Student>
+                return new Response<StudentDto>
                 {
-                    StatusCode = 400,
+                    StatusCode = (int)HttpStatusCode.BadRequest,
                     IsSuccess = false,
                     Message = "Validation failed.",
                     Error = errors,
@@ -37,15 +41,15 @@ namespace StudentAttendanceTrackingApp.Business.Handlers
             {
                 // create metodunun bir başka yolu
 
-                var newStudent = Student.Create(request.FirstName, request.LastName, request.BirthDate, request.Email, request.City);
+                var newStudent = StudentAttendanceTrackingApp.Data.Student.Create(request.FirstName, request.LastName, request.BirthDate, request.Email, request.City);
 
                 await studentRepository.AddAsync(newStudent, cancellationToken);
 
                 if (newStudent == null)
                 {
-                    return new Response<Student>
+                    return new Response<StudentDto>
                     {
-                        StatusCode = 400,
+                        StatusCode = (int)HttpStatusCode.NotFound,
                         IsSuccess = false,
                         Message = "The student could not be created.",
                         Error = "NullException",
@@ -53,22 +57,22 @@ namespace StudentAttendanceTrackingApp.Business.Handlers
                     };
                 }
 
-                return new Response<Student>
+                return new Response<StudentDto>
                 {
-                    StatusCode = 201,
+                    StatusCode = (int)HttpStatusCode.Created,
                     IsSuccess = true,
                     Message = "The student created successfully.",
                     Error = null,
-                    Data = newStudent
+                    Data = mapper.Map<StudentDto>(newStudent) // Automapper 7. adım gerekli yerlerde dönüşümlerin yapılması
                 };
 
             }
             catch (Exception ex)
             {
 
-                return new Response<Student>
+                return new Response<StudentDto>
                 {
-                    StatusCode = 500,
+                    StatusCode = (int)HttpStatusCode.InternalServerError,
                     IsSuccess = false,
                     Message = "An error occurred while creating the student.",
                     Error = ex.Message,

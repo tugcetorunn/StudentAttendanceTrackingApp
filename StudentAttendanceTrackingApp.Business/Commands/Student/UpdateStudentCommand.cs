@@ -1,7 +1,7 @@
 ﻿
 namespace StudentAttendanceTrackingApp.Business.Commands
 {
-    public class UpdateStudentCommand : IRequest<Response<Student?>>
+    public class UpdateStudentCommand : IRequest<Response<StudentDto?>>
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

@@ -1,18 +1,22 @@
 ﻿
+using System.Net;
+
 namespace StudentAttendanceTrackingApp.Business.Handlers
 {
-    public class GetStudentByIdHandler : IRequestHandler<GetStudentByIdQuery, Response<Student>>
+    public class GetStudentByIdHandler : IRequestHandler<GetStudentByIdQuery, Response<StudentDto>>
     {
         // ardalis specification ile repository design pattern ını kullanacağımız için handler lardaki context i repository tarafına vererek handler
         // class larını bir katman daha soyutlaştırmış oluyoruz.
 
         private readonly IStudentRepository studentRepository;
-        public GetStudentByIdHandler(IStudentRepository _studentRepository)
+        private readonly IMapper mapper;
+        public GetStudentByIdHandler(IStudentRepository _studentRepository, IMapper _mapper)
         {
             studentRepository = _studentRepository;
+            mapper = _mapper;
         }
 
-        public async Task<Response<Student>> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Response<StudentDto>> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
         {
             // Custom validation control
             // request kontrolünün böyle sağlanması best practice değil. guard kullanılabilir.
@@ -21,9 +25,9 @@ namespace StudentAttendanceTrackingApp.Business.Handlers
 
             if (request.Id <= 0 || request.Id > maxId || request.Id == null)
             {
-                return new Response<Student>
+                return new Response<StudentDto>
                 {
-                    StatusCode = 400,
+                    StatusCode = (int)HttpStatusCode.BadRequest,
                     IsSuccess = false,
                     Message = "Invalid student ID.",
                     Error = "BadRequest",
@@ -38,9 +42,9 @@ namespace StudentAttendanceTrackingApp.Business.Handlers
 
                 if (student == null)
                 {
-                    return new Response<Student>
+                    return new Response<StudentDto>
                     {
-                        StatusCode = 404,
+                        StatusCode = (int)HttpStatusCode.NotFound,
                         IsSuccess = false,
                         Message = "The student not found.",
                         Error = "NotFound",
@@ -48,21 +52,21 @@ namespace StudentAttendanceTrackingApp.Business.Handlers
                     };
                 }
 
-                return new Response<Student>
+                return new Response<StudentDto>
                 {
-                    StatusCode = 200,
+                    StatusCode = (int)HttpStatusCode.OK,
                     IsSuccess = true,
                     Message = "The student retrieved successfully.",
                     Error = null,
-                    Data = student
+                    Data = mapper.Map<StudentDto>(student)
                 };
             }
             // yukarıdaki koşulların dışında bir sorun çıkarsa diye;
             catch (Exception ex)
             {
-                return new Response<Student>
+                return new Response<StudentDto>
                 {
-                    StatusCode = 500,
+                    StatusCode = (int)HttpStatusCode.InternalServerError,
                     IsSuccess = false,
                     Message = "An error occurred while retrieving the student.",
                     Error = ex.Message,

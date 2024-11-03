@@ -19,3 +19,4 @@ global using FluentValidation.AspNetCore;
 global using StudentAttendanceTrackingApp.Business.Validations;
 global using StudentAttendanceTrackingApp.Business.TokenValidation.Abstract;
 global using StudentAttendanceTrackingApp.Business.TokenValidation.Concrete;
+global using StudentAttendanceTrackingApp.Business.Mappings;
